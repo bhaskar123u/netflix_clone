@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ignore the ctrl+c_ctrl+v file
+ctrl+c_ctrl+v.txt

@@ -1,4 +1,4 @@
-const key = '';
+const key = 'fb0410526e6ca523d5e6fbbf4908413b';
 
 const requests = [
   { title: 'Popular', fetchURL: `https://api.themoviedb.org/3/movie/popular?api_key=${key}` },

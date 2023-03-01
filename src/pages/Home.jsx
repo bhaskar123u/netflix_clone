@@ -8,9 +8,10 @@ const Home = () => {
   return (
     <>
       <Main />
-      {requests.map(request => {
+      {requests.map((request) => {
         console.log(request);
-        <Row  title={request.title} fetchURL={request.fetchURL} />
+        <Row title={request.title} fetchURL={request.fetchURL} />
+        console.log("Row component called");
       })}
     </>
   );
