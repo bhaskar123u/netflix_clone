@@ -10,10 +10,9 @@ const Home = () => {
       <Main />
       {requests.map((request) => {
         console.log(request);
-        <Row title={request.title} fetchURL={request.fetchURL} />
+        return (<Row title={request.title} fetchURL={request.fetchURL} />)
         console.log("Row component called");
-      })}
-    </>
+      })}    </>
   );
 }
 
