@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
 
-const Row = (title, fetchURL) => {
+const Row = ({title, fetchURL}) => {
   console.log(title);
   console.log(fetchURL);
   const [movies, setMovie] = useState([]);
