@@ -9,9 +9,7 @@ const Home = () => {
     <>
       <Main />
       {requests.map((request) => {
-        console.log(request);
-        <Row title={request.title} fetchURL={request.fetchURL} />
-        console.log("Row component called");
+        return <Row key={request.title} title={request.title} fetchURL={request.fetchURL} />
       })}
     </>
   );
