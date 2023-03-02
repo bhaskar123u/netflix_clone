@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import rating from '../icons/rating-icon.png';
 
-const Row = ({ title, fetchURL }) => {
+const Row = ({ {title, fetchURL }}) => {
   const [movies, setMovie] = useState([]);
 
   useEffect(() => {
