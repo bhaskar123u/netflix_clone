@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Main />
       {requests.map((request) => {
-        return (<Row title={request.title} fetchURL={request.fetchURL} />)
+        return (<Row rowId={request.title} title={request.title} fetchURL={request.fetchURL} />)
       })}
     </>
   );

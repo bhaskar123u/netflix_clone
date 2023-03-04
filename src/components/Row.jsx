@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import rating from '../icons/rating-icon.png';
+import Movie from "./Movie";
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
-const Row = ({title, fetchURL }) => {
+const Row = ({title, fetchURL, rowId }) => {
   const [movies, setMovie] = useState([]);
 
   useEffect(() => {
@@ -15,33 +16,29 @@ const Row = ({title, fetchURL }) => {
     getAllMovieForRow();
   }, [fetchURL]);
 
-  console.log(movies);
+  const slideLeft = () => {
+    var slider = document.getElementById('slider' + rowId);
+    slider.scrollLeft = slider.scrollLeft - 500;
+  }
+
+  const slideRight = () => {
+    var slider = document.getElementById('slider' + rowId);
+    slider.scrollLeft = slider.scrollLeft + 500;
+  };
 
   return (
     <>
       <h2 className='text-white font-bold md:text-xl p-4'>{title}</h2>
-      <div className='relative flex items-center'>
-        <div id={'slider'}>
+      <div className='relative flex items-center group'>
+        <MdChevronLeft className="bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block w-5 md:w-7 h-5 md:h-7" size={40} onClick={slideLeft} />
+        <div id={'slider' + rowId} className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'>
           {movies.map((item, id) => {
             return (
-              <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative group p-2">
-                <img
-                  className="w-full h-auto block rounded group-hover:opacity-30 group-hover:bg-black-100"
-                  src={`https://image.tmdb.org/t/p/w500${item?.backdrop_path}`}
-                  alt={item?.title}
-                />
-                <div className="absolute top-2 left-3 w-full h-full opacity-0 group-hover:opacity-100 text-white text-xs sm:text-sm md:text-100 lg:text-300">
-                  <p>{item?.title}</p>
-                  <p>{item?.vote_average}/10</p>
-                  <div className='flex items-center'>
-                    <p>{item?.vote_count}</p>
-                    <img className="w-3 h-3 ml-1" src={rating} alt="rating-icon" />
-                  </div>
-                </div>
-              </div>
+                <Movie key={id} item={item} />
             );
           })}
         </div>
+        <MdChevronRight className="bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block w-5 md:w-7 h-5 md:h-7" size={40} onClick={slideRight} />
       </div>
     </>
   )
